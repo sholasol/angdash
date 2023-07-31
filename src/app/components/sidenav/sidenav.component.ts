@@ -1,4 +1,4 @@
-import { Component, EventEmitter,Output } from '@angular/core';
+import { Component, EventEmitter,HostListener,OnInit,Output } from '@angular/core';
 import { navbarData } from './nav-data';
 
 interface SideNavToggle {
@@ -12,7 +12,7 @@ interface SideNavToggle {
   styleUrls: ['./sidenav.component.scss']
 })
 
-export class SidenavComponent {
+export class SidenavComponent implements OnInit{
 
   @Output() onToggleSideNav: EventEmitter<SideNavToggle> = new EventEmitter();
 
@@ -21,6 +21,21 @@ export class SidenavComponent {
   collapsed = false;
 
   navData = navbarData;
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any){
+    this.screenWidth = window.innerWidth;
+    if(this.screenWidth <= 768) {
+      this.collapsed = false;
+      this.onToggleSideNav.emit({collapsed: this.collapsed, screenWidth: this.screenWidth});
+    }
+  }
+
+
+  ngOnInit(): void {
+    //handling screen resize
+    this.screenWidth = window.innerWidth;
+  }
 
   toggleCollapse(): void {
     this.collapsed = !this.collapsed;
