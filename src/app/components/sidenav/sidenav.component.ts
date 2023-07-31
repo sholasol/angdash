@@ -14,7 +14,7 @@ interface SideNavToggle {
 
 export class SidenavComponent {
 
-  @Output() onToggleSidenav: EventEmitter<SideNavToggle> = new EventEmitter();
+  @Output() onToggleSideNav: EventEmitter<SideNavToggle> = new EventEmitter();
 
   screenWidth = 0;
 
@@ -24,12 +24,12 @@ export class SidenavComponent {
 
   toggleCollapse(): void {
     this.collapsed = !this.collapsed;
-    this.onToggleSidenav.emit({collapsed: this.collapsed, screenWidth: this.screenWidth});
+    this.onToggleSideNav.emit({collapsed: this.collapsed, screenWidth: this.screenWidth});
   }
 
   closeSidenav(): void {
     this.collapsed  = false;
-    this.onToggleSidenav.emit({collapsed: this.collapsed, screenWidth: this.screenWidth});
+    this.onToggleSideNav.emit({collapsed: this.collapsed, screenWidth: this.screenWidth});
   }
 
 }
