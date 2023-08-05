@@ -1,6 +1,7 @@
 import { Component, EventEmitter,HostListener,OnInit,Output } from '@angular/core';
 import { navbarData } from './nav-data';
 import { animate, animation, keyframes, style, transition, trigger } from '@angular/animations';
+import { INavbarData, fadeInOut } from './helper';
 
 interface SideNavToggle {
   screenWidth : number;
@@ -12,26 +13,13 @@ interface SideNavToggle {
   templateUrl: './sidenav.component.html',
   styleUrls: ['./sidenav.component.scss'],
   animations: [
-    trigger('fadeInOut', [
-      transition(':enter', [
-        style({opacity: 0}),
-        animate('350ms', 
-          style({opacity: 1})
-        )
-      ]),
-      transition(':leave', [
-        style({opacity: 1}),
-        animate('350ms', 
-          style({opacity: 0})
-        )
-      ])
-    ]),
+    fadeInOut,
     trigger('rotate', [
       transition(':enter', [
         animate('1000ms', 
         keyframes([
-          style({trasform: 'rotate(0deg)', offset: '0'}),
-          style({trasform: 'rotate(2turn)', offset: '1'})
+          style({transform: 'rotate(0deg)', offset: '0'}),
+          style({transform: 'rotate(2turn)', offset: '1'})
         ]))
       ])
     ])
@@ -47,6 +35,7 @@ export class SidenavComponent implements OnInit{
   collapsed = false;
 
   navData = navbarData;
+  multiple:boolean = false;
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any){
@@ -71,6 +60,22 @@ export class SidenavComponent implements OnInit{
   closeSidenav(): void {
     this.collapsed  = false;
     this.onToggleSideNav.emit({collapsed: this.collapsed, screenWidth: this.screenWidth});
+  }
+
+  handleClick(item: INavbarData): void{
+    if(!this.multiple){
+      for(let modelItem of this.navData){
+        if(item !== modelItem && modelItem.expanded){
+            modelItem.expanded = false;
+        }
+      }
+    }
+    item.expanded = !item.expanded
+  }
+
+
+  logout() {
+    alert('You will be logged out')
   }
 
 }

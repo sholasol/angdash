@@ -1,48 +1,53 @@
-export const navbarData = [
+import { INavbarData } from "./helper";
+
+export const navbarData : INavbarData[] = [
     {
-        routerLink: 'dashboard',
+        routeLink: 'dashboard',
         icon: 'fa fa-home',
         label: 'Dashboard'
     },
     {
-        routerLink: 'products',
+        routeLink: 'products',
         icon: 'fa fa-database',
         label: 'Products'
     },
     {
-        routerLink: 'statistics',
+        routeLink: 'statistics',
         icon: 'fa fa-bar-chart',
         label: 'Statistics'
     },
     {
-        routerLink: 'coupons',
+        routeLink: 'coupons',
         icon: 'fa fa-tags',
-        label: 'Coupons'
+        label: 'Coupons',
+        // expanded: true,
+        // items: [
+        //     {
+        //         routeLink: 'coupons/list',
+        //         label: 'List Coupons'
+        //     },
+        //     {
+        //         routeLink: 'coupons/create',
+        //         label: 'Create Coupons'
+        //     }
+        // ]
     },
     {
-        routerLink: 'pages',
+        routeLink: 'pages',
         icon: 'fa fa-file',
         label: 'Pages'
     },
     {
-        routerLink: 'media',
+        routeLink: 'media',
         icon: 'fa fa-camera',
         label: 'Media'
     }, 
     {
-        routerLink: 'settings',
+        routeLink: 'settings',
         icon: 'fa fa-cog',
         label: 'Settings'
     },
-    {
-        routerLink: logout,
-        icon: 'fa fa-power-off',
-        label: 'Logout'
-    }
 ];
 
 
 
-function logout() {
-    
-}

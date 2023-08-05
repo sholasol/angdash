@@ -15,6 +15,9 @@ const routes: Routes = [
   { path: 'products', component: ProductsComponent},
   { path: 'pages', component: PagesComponent},
   { path: 'coupons', component: CouponsComponent},
+  // { path: 'coupons', 
+  // loadChildren: () => import('./coupons/coupons.module').then(m => m.CouponsModule)
+  // },
   { path: 'media', component: MediaComponent},
   { path: 'settings', component: SettingsComponent},
   { path: 'statistics', component: StatisticsComponent}

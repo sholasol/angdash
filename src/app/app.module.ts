@@ -15,6 +15,8 @@ import { PagesComponent } from './components/pages/pages.component';
 import { MediaComponent } from './components/media/media.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { SublevelMenuComponent } from './components/sidenav/sublevel-menu.component';
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     PagesComponent,
     MediaComponent,
     SettingsComponent,
-    DashboardComponent
+    DashboardComponent,
+    SublevelMenuComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
